@@ -1,0 +1,45 @@
+server:
+  port: 8088
+  servlet:
+    context-path: /api
+    # session 30 天过期
+    session:
+      timeout: "P30D"
+      cookie:
+        secure: true
+        same-site: none
+
+
+spring:
+  application:
+    name: sqlfather
+
+  profiles:
+    active: dev
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+knife4j:
+  # 是否开启加强模式 true开启  false关闭
+  enable: true
+  setting:
+    # 是否开启调试功能  true开启  false关闭
+    enableDebug: true
+  basic:
+    # 是否开启认证功能  true开启  false关闭
+    enable: false
+    username: root
+    password: 123456
+    # 开启生产环境屏蔽访问接口文档
+  production: false
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
